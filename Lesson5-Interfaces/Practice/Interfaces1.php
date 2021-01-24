@@ -47,9 +47,9 @@ class Greeter {
 
 }
 
-
-$greeter = new Greeter(new CliLogger());
-$greeter->giveGreetings();
-
-$greeter = new Greeter(new FileLogger(__DIR__ . "/actionLog.log"));
-$greeter->giveGreetings();
+//
+//$greeter = new Greeter(new CliLogger());
+//$greeter->giveGreetings();
+//
+//$greeter = new Greeter(new FileLogger(__DIR__ . "/actionLog.log"));
+//$greeter->giveGreetings();
