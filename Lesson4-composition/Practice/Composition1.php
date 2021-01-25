@@ -207,3 +207,46 @@ $car->start();
 $car->accelerateTo30kmPerHour();
 $car->brake();
 $car->exit();
+
+/*
+ * I have no name!@99ed037ad563:/app/Lesson4-composition/Practice$ php Composition1.php
+Door number 1 has been unlocked
+Door number 2 has been unlocked
+Door number 3 has been unlocked
+Door number 4 has been unlocked
+Door number 1 has been opened
+Door number 1 has been closed
+The engine is on!
+Changing speed to 30km/h...
+Wheel 1 has started spinning
+Wheel 2 has started spinning
+Wheel 3 has started spinning
+Wheel 4 has started spinning
+The speed is now 5km/h
+The speed is now 10km/h
+The speed is now 15km/h
+The speed is now 20km/h
+The speed is now 25km/h
+The speed is now 30km/h
+The car has reached 30km/h!
+Changing speed to 0km/h...
+The speed is now 25km/h
+The speed is now 20km/h
+The speed is now 15km/h
+The speed is now 10km/h
+The speed is now 5km/h
+The speed is now 0km/h
+Wheel 1 has stopped spinning
+Wheel 2 has stopped spinning
+Wheel 3 has stopped spinning
+Wheel 4 has stopped spinning
+The car has reached 0km/h!
+The engine is off
+Door number 1 has been opened
+Door number 1 has been closed
+Door number 1 has been locked
+Door number 2 has been locked
+Door number 3 has been locked
+Door number 4 has been locked
+
+ */
