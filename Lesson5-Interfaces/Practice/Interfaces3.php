@@ -8,9 +8,9 @@
  *  The classes involved in order to persist objects are the following.
  */
 
-class MyslqConnection {
+class MySqlConnection {
 
-    // Stablishes the database connection
+    // Establishes the database connection
     function connect() : void {}
 
     // Executes insert, update delete
@@ -25,12 +25,12 @@ class MyslqConnection {
 class PersonDao {
 
     /*
-     * DAO means data access object, it's a common pattern used in order to handle the persistance layer.
-     *  You can read more about daos in https://es.wikipedia.org/wiki/Objeto_de_acceso_a_datos
+     * DAO means data access object, it's a common pattern used in order to handle the persistence layer.
+     *  You can read more about DAOs in https://es.wikipedia.org/wiki/Objeto_de_acceso_a_datos
      */
     private $connection;
 
-    public function __construct(MyslqConnection $connection)
+    public function __construct(MySqlConnection $connection)
     {
         $this->connection = $connection;
     }
@@ -58,7 +58,7 @@ class PersonDao {
         $this->connection->connect();
         $query = "INSERT INTO PERSON (id, name) VALUES {$person->getId()} , {$person->getName()}";
         $results = $this->connection->executeQuery($query);
-        // Creates the objects from the array of resutls.
+        // Creates the objects from the array of results.
         $this->connection->disconnect();
         return $results;
     }
@@ -88,6 +88,6 @@ class Person {
  *
  *  Consider that the company expects to be able to make the same operations present in mysql in the new MongoDb connection
  *
- *  Please commit the canges needed and also the class diagram for the solution.
+ *  Please commit the changes needed and also the class diagram for the solution.
  */
 

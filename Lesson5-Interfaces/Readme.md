@@ -3,7 +3,7 @@
 Interfaces allow us to specify the behavior that must be implemented by classes. Think about interfaces as a contract
 that needs to be honored if you want to implement it.
 
-Interfaces allows you to work fully abstracted from the implementations.
+Interfaces allow you to work fully abstracted from the implementations.
 
 ### Declaring interfaces
 ```php
@@ -75,7 +75,7 @@ function greet(Greeter $greeter)
 
 ### Real world example
 
-Let's suppose that you have to log what's happening in your code and your company decided to have two different loggers
+Let's suppose that you have to log what's happening in your code, and your company decided to have two different loggers
 
 1. A logger that will write an output in the console if you are in a development environment.
 2. A logger that will write the output to a file if you are in production mode.
