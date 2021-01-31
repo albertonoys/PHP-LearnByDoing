@@ -1,5 +1,4 @@
 <?php
-
 /**
  *  Your company uses MySql in order to store data.
  *  For performance reasons they want to migrate the storage of some objects to MongoDb.
@@ -8,18 +7,56 @@
  *  The classes involved in order to persist objects are the following.
  */
 
-class MySqlConnection {
+interface DatabaseConnectionInterface {
 
     // Establishes the database connection
-    function connect() : void {}
+    function connect(): void;
 
-    // Executes insert, update delete
-    function executeQuery(string $query) : void {}
+    // Executes insert, update and delete
+    function executeQuery(string $query): void;
 
     // Used for selects and returns an array with the results.
-    function getQuery(string $query) : array {}
+    function getQuery(string $query): array;
 
-    function disconnect() : void {}
+    function disconnect(): void;
+}
+
+class MySqlConnection implements DatabaseConnectionInterface {
+
+    function connect(): void {
+        // TODO: Implement connect() method.
+    }
+
+    function executeQuery(string $query): void {
+        // TODO: Implement executeQuery() method.
+    }
+
+    function getQuery(string $query): array {
+        // TODO: Implement getQuery() method.
+    }
+
+    function disconnect(): void {
+        // TODO: Implement disconnect() method.
+    }
+}
+
+class MongoDBConnection implements DatabaseConnectionInterface {
+
+    function connect(): void {
+        // TODO: Implement connect() method.
+    }
+
+    function executeQuery(string $query): void {
+        // TODO: Implement executeQuery() method.
+    }
+
+    function getQuery(string $query): array {
+        // TODO: Implement getQuery() method.
+    }
+
+    function disconnect(): void {
+        // TODO: Implement disconnect() method.
+    }
 }
 
 class PersonDao {
@@ -30,18 +67,15 @@ class PersonDao {
      */
     private $connection;
 
-    public function __construct(MySqlConnection $connection)
-    {
+    public function __construct(DatabaseConnectionInterface $connection) {
         $this->connection = $connection;
     }
-
 
     /*
      * The code below wont work in a real scenario, it's just a sample to give a better picture about
      * what this method would be like.
      */
-    public function searchBy(array $criteria) : array
-    {
+    public function searchBy(array $criteria): array {
         $this->connection->connect();
         $query = 'SELECT * FROM person where ';
         foreach ($criteria as $field => $value) {
@@ -53,14 +87,12 @@ class PersonDao {
         return $results;
     }
 
-    public function save(Person $person) : void
-    {
+    public function save(Person $person): void {
         $this->connection->connect();
         $query = "INSERT INTO PERSON (id, name) VALUES {$person->getId()} , {$person->getName()}";
-        $results = $this->connection->executeQuery($query);
+        $this->connection->executeQuery($query);
         // Creates the objects from the array of results.
         $this->connection->disconnect();
-        return $results;
     }
 }
 
@@ -69,13 +101,11 @@ class Person {
     private $id;
     private $name;
 
-    public function getId() : int
-    {
+    public function getId(): int {
         return $this->id;
     }
 
-    public function getName() : string
-    {
+    public function getName(): string {
         return $this->name;
     }
 }
@@ -88,6 +118,6 @@ class Person {
  *
  *  Consider that the company expects to be able to make the same operations present in mysql in the new MongoDb connection
  *
- *  Please commit the canges needed and also the class diagram for the solution.
+ *  Please commit the changes needed and also the class diagram for the solution.
  */
 
