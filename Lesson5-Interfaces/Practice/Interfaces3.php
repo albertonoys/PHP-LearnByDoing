@@ -1,16 +1,16 @@
 <?php
 
 /**
- *  Your company uses Mysql in order to store data.
+ *  Your company uses MySql in order to store data.
  *  For performance reasons they want to migrate the storage of some objects to MongoDb.
  *  As this kind of projects take long time, the first actionable is to make the code able to support both types of
  *  connections.
  *  The classes involved in order to persist objects are the following.
  */
 
-class MyslqConnection {
+class MySqlConnection {
 
-    // Stablishes the database connection
+    // Establishes the database connection
     function connect() : void {}
 
     // Executes insert, update delete
@@ -25,12 +25,12 @@ class MyslqConnection {
 class PersonDao {
 
     /*
-     * DAO means data access object, it's a common pattern used in order to handle the persistance layer.
-     *  You can read more about daos in https://es.wikipedia.org/wiki/Objeto_de_acceso_a_datos
+     * DAO means data access object, it's a common pattern used in order to handle the persistence layer.
+     *  You can read more about DAOs in https://es.wikipedia.org/wiki/Objeto_de_acceso_a_datos
      */
     private $connection;
 
-    public function __construct(MyslqConnection $connection)
+    public function __construct(MySqlConnection $connection)
     {
         $this->connection = $connection;
     }
@@ -48,7 +48,7 @@ class PersonDao {
             $query .= $field . ' = ' . $value;
         }
         $results = $this->connection->getQuery($query);
-        // Creates the objects from the array of resutls.
+        // Creates the objects from the array of results.
         $this->connection->disconnect();
         return $results;
     }
@@ -58,7 +58,7 @@ class PersonDao {
         $this->connection->connect();
         $query = "INSERT INTO PERSON (id, name) VALUES {$person->getId()} , {$person->getName()}";
         $results = $this->connection->executeQuery($query);
-        // Creates the objects from the array of resutls.
+        // Creates the objects from the array of results.
         $this->connection->disconnect();
         return $results;
     }

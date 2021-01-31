@@ -3,7 +3,7 @@
 Interfaces allow us to specify the behavior that must be implemented by classes. Think about interfaces as a contract
 that needs to be honored if you want to implement it.
 
-Interfaces allows you to work fully abstracted from the implementations.
+Interfaces allow you to work fully abstracted from the implementations.
 
 ### Declaring interfaces
 ```php
