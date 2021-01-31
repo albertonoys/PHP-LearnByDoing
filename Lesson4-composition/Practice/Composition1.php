@@ -14,19 +14,19 @@ require_once '../../Lesson5-Interfaces/Practice/Interfaces1.php';
  *   If the speed is 0, the wheels will stop spinning.
  */
 
-class Car {
+abstract class Vehicle {
+    protected $doors;
+    protected $engine;
+    protected $logger;
+    protected $doorNumber;
+    protected $wheelNumber;
 
-    const DOOR_NUMBER = 4;
-    const WHEEL_NUMBER = 4;
-
-    private $logger;
-    private $doors;
-    private $engine;
-
-    public function __construct() {
+    public function __construct(int $wheelNumber, int $doorNumber) {
         $this->logger = new CliLogger();
-        $this->engine = new Engine(self::WHEEL_NUMBER);
-        for ($i = 1; $i <= self::DOOR_NUMBER; $i++) {
+        $this->wheelNumber = $wheelNumber;
+        $this->doorNumber = $doorNumber;
+        $this->engine = new Engine($wheelNumber);
+        for ($i = 1; $i <= $doorNumber; $i++) {
             $this->doors[] =  new Door($i);
         }
     }
@@ -44,7 +44,7 @@ class Car {
         $this->lockDoors();
     }
 
-    function start() {
+    function start(){
         $this->engine->start();
     }
 
@@ -78,6 +78,37 @@ class Car {
 
     private function stop() {
         $this->engine->stop();
+    }
+}
+
+
+class Car extends Vehicle {
+
+    const DOOR_NUMBER = 4;
+    const WHEEL_NUMBER = 4;
+
+    public function __construct() {
+        parent::__construct(self::WHEEL_NUMBER, self::DOOR_NUMBER);
+    }
+}
+
+class Truck extends Vehicle {
+
+    const DOOR_NUMBER = 2;
+    const WHEEL_NUMBER = 8;
+
+    public function __construct() {
+        parent::__construct(self::WHEEL_NUMBER, self::DOOR_NUMBER);
+    }
+}
+
+class Motorcycle extends Vehicle {
+
+    const DOOR_NUMBER = 0;
+    const WHEEL_NUMBER = 0;
+
+    public function __construct() {
+        parent::__construct(self::WHEEL_NUMBER, self::DOOR_NUMBER);
     }
 }
 
